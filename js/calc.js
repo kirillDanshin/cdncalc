@@ -177,7 +177,7 @@ var
 				{traffic:  100000, prices: [{continents: ['US','EU'], price: 0.045}, {continents: ['AS','AF'], price: 0.120}, {continents: ['SA'], price: 0.160}]},
 				{traffic:  400000, prices: [{continents: ['US','EU'], price: 0.030}, {continents: ['AS','AF'], price: 0.100}, {continents: ['SA'], price: 0.135}]},
 				{traffic: 1000000, prices: [{continents: ['US','EU'], price: 0.025}, {continents: ['AS','AF'], price: 0.085}, {continents: ['SA'], price: 0.110}]},
-				{traffic:      -1, prices: [{continents: ['US','EU'], price: 0.019}, {continents: ['AS','AF'], price: 0.070}, {continents: ['SA'], price: 0.095}]},
+				{traffic:      -1, prices: [{continents: ['US','EU'], price: 0.019}, {continents: ['AS','AF'], price: 0.070}, {continents: ['SA'], price: 0.095}]}
 			];
 			$.each(matrix, function (index) {
 				if (traf <= this.traffic || index == matrix.length-1) {
@@ -216,7 +216,7 @@ var
 				{traffic:  350000, prices: [{continents:['US','EU'],price: 0.04},{continents:['AS','AU'],price: 0.10},{continents:['SA'],price:0.16},{continents:['JP'],price:0.106},{continents:['IN'],price:0.1}]},
 				{traffic:  524000, prices: [{continents:['US','EU'],price: 0.03},{continents:['AS'],price: 0.08},{continents:['SA'],price:0.140},{continents:['AU'],price:0.095},{continents:['JP'],price:0.085},{continents:['IN'],price:0.1}]},
 				{traffic: 4000000, prices: [{continents:['US','EU'],price:0.025},{continents:['AS'],price: 0.07},{continents:['SA'],price:0.130},{continents:['AU'],price:0.090},{continents:['JP'],price:0.075},{continents:['IN'],price:0.1}]},
-				{traffic:      -1, prices: [{continents:['US','EU'],price: 0.02},{continents:['AS'],price: 0.06},{continents:['SA'],price:0.125},{continents:['AU'],price:0.085},{continents:['JP'],price:0.065},{continents:['IN'],price:0.1}]},
+				{traffic:      -1, prices: [{continents:['US','EU'],price: 0.02},{continents:['AS'],price: 0.06},{continents:['SA'],price:0.125},{continents:['AU'],price:0.085},{continents:['JP'],price:0.065},{continents:['IN'],price:0.1}]}
 			];
 			var requests=[{continents:['US'],price: 0.0075,price_s:0.01},{continents:['EU','AS'],price:0.009,price_s:0.012},{continents:['AU'],price:0.009,price_s:0.0125},{continents:['SA'],price:0.016,price_s:0.022}];               
 			$.each(matrix, function (index) {
@@ -259,13 +259,13 @@ var
 			var  note = '', total = 0;
 			total = calculate_total();
 			var matrix = [
-		{traffic:   10000,prices:[{continents:['US','EU'],price: 0.12},{continents:['AU'],price: 0.19}],requests:[{continents:['US'],price: 0.0075,price_s:0.01},{continents:['AU','EU'],price:0.009,price_s:0.012}]},
-		{traffic:   40000,prices:[{continents:['US','EU'],price: 0.08},{continents:['AU'],price: 0.14}],requests:[{continents:['US'],price: 0.0075,price_s:0.01},{continents:['AU','EU'],price:0.009,price_s:0.012}]},
-		{traffic:  100000,prices:[{continents:['US','EU'],price: 0.06},{continents:['AU'],price: 0.12}],requests:[{continents:['US'],price: 0.0075,price_s:0.01},{continents:['AU','EU'],price:0.009,price_s:0.012}]},
-		{traffic:  350000,prices:[{continents:['US','EU'],price: 0.04},{continents:['AU'],price: 0.10}],requests:[{continents:['US'],price: 0.0075,price_s:0.01},{continents:['AU','EU'],price:0.009,price_s:0.012}]},
-		{traffic:  500000,prices:[{continents:['US','EU'],price: 0.03},{continents:['AU'],price:0.095}],requests:[{continents:['US'],price: 0.0075,price_s:0.01},{continents:['AU','EU'],price:0.009,price_s:0.012}]},
-		{traffic: 4000000,prices:[{continents:['US','EU'],price:0.025},{continents:['AU'],price: 0.09}],requests:[{continents:['US'],price: 0.0075,price_s:0.01},{continents:['AU','EU'],price:0.009,price_s:0.012}]},
-		{traffic:      -1,prices:[{continents:['US','EU'],price: 0.02},{continents:['AU'],price:0.085}],requests:[{continents:['US'],price: 0.0075,price_s:0.01},{continents:['AU','EU'],price:0.009,price_s:0.012}]},
+		{traffic:   10000,prices:[{continents:['US','EU'],price: 0.12},{continents:['AU','AS'],price: 0.19}],requests:[{continents:['US'],price: 0.0075,price_s:0.01},{continents:['AU','EU','AS'],price:0.009,price_s:0.012}]},
+		{traffic:   40000,prices:[{continents:['US','EU'],price: 0.08},{continents:['AU','AS'],price: 0.14}],requests:[{continents:['US'],price: 0.0075,price_s:0.01},{continents:['AU','EU','AS'],price:0.009,price_s:0.012}]},
+		{traffic:  100000,prices:[{continents:['US','EU'],price: 0.06},{continents:['AU','AS'],price: 0.12}],requests:[{continents:['US'],price: 0.0075,price_s:0.01},{continents:['AU','EU','AS'],price:0.009,price_s:0.012}]},
+		{traffic:  350000,prices:[{continents:['US','EU'],price: 0.04},{continents:['AU','AS'],price: 0.10}],requests:[{continents:['US'],price: 0.0075,price_s:0.01},{continents:['AU','EU','AS'],price:0.009,price_s:0.012}]},
+		{traffic:  500000,prices:[{continents:['US','EU'],price: 0.03},{continents:['AU','AS'],price:0.095}],requests:[{continents:['US'],price: 0.0075,price_s:0.01},{continents:['AU','EU','AS'],price:0.009,price_s:0.012}]},
+		{traffic: 4000000,prices:[{continents:['US','EU'],price:0.025},{continents:['AU','AS'],price: 0.09}],requests:[{continents:['US'],price: 0.0075,price_s:0.01},{continents:['AU','EU','AS'],price:0.009,price_s:0.012}]},
+		{traffic:      -1,prices:[{continents:['US','EU'],price: 0.02},{continents:['AU','AS'],price:0.085}],requests:[{continents:['US'],price: 0.0075,price_s:0.01},{continents:['AU','EU','AS'],price:0.009,price_s:0.012}]}
 			];
 			
 			$.each(matrix, function (index) {
@@ -342,7 +342,7 @@ var
 
   	 		  }
 			$("#traffic_info tr:contains(JoDiHost) td:last").html('$' + result);
-		},
+		}
 
 		
 		
