@@ -218,7 +218,7 @@ var
 				{traffic: 4000000, prices: [{continents:['US','EU'],price:0.025},{continents:['AS'],price: 0.07},{continents:['SA'],price:0.130},{continents:['AU'],price:0.090},{continents:['JP'],price:0.075},{continents:['IN'],price:0.1}]},
 				{traffic:      -1, prices: [{continents:['US','EU'],price: 0.02},{continents:['AS'],price: 0.06},{continents:['SA'],price:0.125},{continents:['AU'],price:0.085},{continents:['JP'],price:0.065},{continents:['IN'],price:0.1}]}
 			];
-			var requests=[{continents:['US'],price: 0.0075,price_s:0.01},{continents:['EU','AS'],price:0.009,price_s:0.012},{continents:['AU'],price:0.009,price_s:0.0125},{continents:['SA'],price:0.016,price_s:0.022}];               
+			var requests=[{continents:['US'],price: 0.00000075,price_s:0.000001},{continents:['EU','AS'],price:0.0000009,price_s:0.0000012},{continents:['AU'],price:0.0000009,price_s:0.00000125},{continents:['SA'],price:0.0000016,price_s:0.0000022}];               
 			$.each(matrix, function (index) {
 				if (traf <= this.traffic || index == matrix.length-1) {
 					$.each(this.prices, function (){
