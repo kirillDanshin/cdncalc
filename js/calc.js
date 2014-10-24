@@ -315,16 +315,11 @@ var
 			var traf = $("#traffic_volume").val();
 			switch( true )
 			  { 
- 			    case traf < 500: 
-			    result = result = Math.ceil(traf * 0.08);
- 			    show_cdn_plan_notes("JoDiHost","EdgeCast Global Premium");
- 	  		    break; 
-			 
-		            case traf >= 500 && traf < 1000:
+     			    case traf < 1000: 
 			    result = result = Math.ceil(traf * 0.07);
  			    show_cdn_plan_notes("JoDiHost","EdgeCast Global Premium");
  	  		    break; 
-
+			 
 		            case traf >= 1000 && traf < 5000:
 			    result = result = Math.ceil(traf * 0.06);
  			    show_cdn_plan_notes("JoDiHost","EdgeCast Global Premium");
@@ -335,11 +330,40 @@ var
  			    show_cdn_plan_notes("JoDiHost","EdgeCast Global Premium");
  	  		    break; 
 
-		            case traf >= 10000:
+		            case traf >= 10000 && traf < 25000:
+			    result = result = Math.ceil(traf * 0.0425);
+ 			    show_cdn_plan_notes("JoDiHost","EdgeCast Global Premium");
+ 	  		    break; 
+
+		            case traf >= 25000 && traf < 50000:
 			    result = result = Math.ceil(traf * 0.04);
  			    show_cdn_plan_notes("JoDiHost","EdgeCast Global Premium");
  	  		    break; 
 
+		            case traf >= 50000 && traf < 100000:
+			    result = result = Math.ceil(traf * 0.035);
+ 			    show_cdn_plan_notes("JoDiHost","EdgeCast Global Premium");
+ 	  		    break; 
+
+		            case traf >= 100000 && traf < 200000:
+			    result = result = Math.ceil(traf * 0.03);
+ 			    show_cdn_plan_notes("JoDiHost","EdgeCast Global Premium");
+ 	  		    break; 
+
+		            case traf >= 200000 && traf < 500000:
+			    result = result = Math.ceil(traf * 0.025);
+ 			    show_cdn_plan_notes("JoDiHost","EdgeCast Global Premium");
+ 	  		    break; 
+
+		            case traf >= 500000 && traf < 1000000:
+			    result = result = Math.ceil(traf * 0.0225);
+ 			    show_cdn_plan_notes("JoDiHost","EdgeCast Global Premium");
+ 	  		    break; 
+
+		            case traf >= 1000000:
+			    result = result = Math.ceil(traf * 0.02);
+ 			    show_cdn_plan_notes("JoDiHost","EdgeCast Global Premium");
+ 	  		    break; 
   	 		  }
 			$("#traffic_info tr:contains(JoDiHost) td:last").html('$' + result);
 		}
