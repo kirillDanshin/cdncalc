@@ -5,15 +5,16 @@ function show_cdn_plan_notes(cdn_name, plan_name, extra, lastline ) {
 	lastline = (typeof lastline === "undefined") ? '' : lastline;
 	$("#traffic_info tr:contains("+cdn_name+") td").eq(3).html(plan_name + ((extra > 0) ? (' + extra $' + extra + ' ') : '') + lastline);
 }
-function max_and_cachefly(trange, cdn_name) {
+function plan_calc(trange, cdn_name) {
 	var traf = $("#traffic_volume").val();
 	var result = 0;
 	var last_excessPrice = 0;
-	var recomm_html = ' <span id="recommended">Recommended!</span> <span id="coupon">discount -25%</span>';
+	/*var recomm_html = ' <span id="recommended">Recommended!</span>';*/
+	var recomm_html = '';
 	$.each(trange, function(index) {
 		if (traf <= this.included) {
 			result = this.price ;
-			$("#traffic_info tr:contains("+cdn_name+") td").eq(3).html(this.name + ((cdn_name == 'MaxCDN') ? recomm_html : '') );
+			$("#traffic_info tr:contains("+cdn_name+") td").eq(3).html(this.name + ((cdn_name == 'MaxCDN') ? recomm_html : ''));
 			return false;
 		}
 		else {
@@ -72,16 +73,20 @@ var
 				{name:'Plus',     price:  99, included:  256, excessPrice: 0.37 },
 				{name:'Premium',  price: 299, included: 1200, excessPrice: 0.25 }, 
 				{name:'Platinum', price: 409, included: 2048, excessPrice: 0.20 } ];
-			max_and_cachefly(trange, "CacheFly");
+			plan_calc(trange, "CacheFly");
 		},
 		
 		MaxCDN: function () {
 			var trange = [ 
-				{name:'#!/bin/start', price:6.75, included:   100, excessPrice: 0.08 },
-				{name:'./plus',       price:29.25, included:   500, excessPrice: 0.07 }, 
-				{name:'./business',   price:59.25, included:  1000, excessPrice: 0.06 },
-				{name:'./premium',    price:374.25, included: 10000, excessPrice: 0.05 } ];
-			max_and_cachefly(trange, "MaxCDN");
+				{name:'100GB', price:9, included:   100, excessPrice: 0.08 },
+				{name:'500GB', price:39, included:   500, excessPrice: 0.07 }, 
+				{name:'1TB',  price:79, included:  1000, excessPrice: 0.06 },
+				{name:'5TB',  price:299, included: 5000, excessPrice: 0.055 },
+				{name:'10TB', price:499, included: 10000, excessPrice: 0.05 },
+				{name:'50TB', price:2560, included: 50000, excessPrice: 0.045 },
+				{name:'150TB', price:6144, included: 150000, excessPrice: 0.04 },
+				{name:'350TB',price:12544, included: 350000, excessPrice: 0.035 } ];
+			plan_calc(trange, "MaxCDN");
 		},
 		
 		MtProCDN: function () {
@@ -109,26 +114,23 @@ var
 			$("#traffic_info tr:contains(KeyCDN) td:last").html('$' + result);
 			show_cdn_plan_notes("KeyCDN","Default Plan");
 		},
-		
 		CDNify: function () {
-			var traf = $("#traffic_volume").val();
-			var result = Math.ceil(traf * 0.06);
-			$.each([ [500, 29], [1000, 49], [500, 29], [2000, 95], [5000, 230], [10000, 445] ], function(index) {
-				if (traf <=  this[0]) {
-					result = this[1];
-					if (index < 2 ) show_cdn_plan_notes("CDNify","Plan Developer");
-					if (index == 2) show_cdn_plan_notes("CDNify","Plan Start Up");
-					if (index > 2 ) show_cdn_plan_notes("CDNify","Plan Agency");
-					return false;
-				}
-			});
-			$("#traffic_info tr:contains(CDNify) td:last").html('$' + result);
+			var trange = [ 
+				{name:'Micro', price:10, included:   150, excessPrice: 0.07 },
+				{name:'Developer', price:30, included:   500, excessPrice: 0.06 }, 
+				{name:'Startup',  price:60, included:  1000, excessPrice: 0.05 },
+				{name:'Agency',  price:100, included: 2000, excessPrice: 0.05 },
+				{name:'Enterprise', price:250, included: 5000, excessPrice: 0.05 },
+				{name:'Enterprise 10', price:500, included: 10000, excessPrice: 0.05 },
+				{name:'Enterprise 20', price:1000, included: 20000, excessPrice: 0.04 },
+				{name:'Enterprise 50',price:2000, included: 50000, excessPrice: 0.04 } ];
+			plan_calc(trange, "CDNify");
 		},
 		
 		Akamai: function () {
 			var traf = $("#traffic_volume").val();
 			var result = Math.ceil(traf * 0.15);
-			$.each([ [1000, 100], [2500, 250], [5000, 500], [2000, 95], [10000, 900], [100000, 8000] ], function(index) {
+			$.each([ [1000, 100], [2500, 250], [5000, 500], [10000, 900], [100000, 8000] ], function(index) {
 				if (traf <=  this[0]) {
 					result = this[1];
 					return false;
@@ -391,9 +393,9 @@ function highlight_cheapest() {
 	
 	
 }	
-function highlight_recommended() {
+function highlight_recommended() {/*
 	$('#traffic_info tr').removeClass('warning');
-	$('#traffic_info tr:contains(MaxCDN)').addClass('warning');
+	$('#traffic_info tr:contains(MaxCDN)').addClass('warning');*/
 }	
 
 function recalculate() {
