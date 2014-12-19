@@ -88,6 +88,44 @@ var
 				{name:'350TB',price:12544, included: 350000, excessPrice: 0.035 } ];
 			plan_calc(trange, "MaxCDN");
 		},
+
+        CDNNOW: function () {
+            var us, eu, note, result;
+            var traf = $("#traffic_volume").val();
+            switch( true )
+            {
+                case traf < 10240:
+                    eu = Math.ceil(traf * 0.10);
+                    us = Math.ceil(traf * 0.12);
+                    note = 'Europe, Asia - ' + eu + '$' + '<br>' +
+                        'USA, South America - ' + us + '$';
+                    break;
+
+                case traf >= 10240 && traf < 51200:
+                    eu = Math.ceil(traf * 0.08);
+                    us = Math.ceil(traf * 0.10);
+                    note = 'Europe, Asia - ' + eu + '$' + '<br>' +
+                        'USA, South America - ' + us + '$';
+                    break;
+
+                case traf >= 51200 && traf < 102400:
+                    eu = Math.ceil(traf * 0.08);
+                    us = Math.ceil(traf * 0.09);
+                    note = 'Europe, Asia - ' + eu + '$' + '<br>' +
+                        'USA, South America - ' + us + '$';
+                    break;
+
+                case traf >= 102400:
+                    eu = Math.ceil(traf * 0.07);
+                    us = Math.ceil(traf * 0.08);
+                    note = 'Europe, Asia - ' + eu + '$' + '<br>' +
+                        'USA, South America - ' + us + '$';
+                    break;
+
+            }
+            show_cdn_plan_notes("CDNNOW", note);
+            $("#traffic_info tr:contains(CDNNOW) td:last").html('$' + us);
+        },
 		
 		MtProCDN: function () {
 			var traf = $("#traffic_volume").val();
