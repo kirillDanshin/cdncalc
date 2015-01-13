@@ -90,8 +90,9 @@ var
 		},
 
         CDNNOW: function () {
-            var us, eu, note, result;
+            var us, eu, note;
             var traf = $("#traffic_volume").val();
+			var result = 0;
             switch( true )
             {
                 case traf < 10240:
@@ -123,8 +124,10 @@ var
                     break;
 
             }
+
+			result = us + eu;
             show_cdn_plan_notes("CDNNOW", note);
-            $("#traffic_info tr:contains(CDNNOW) td:last").html('$' + us);
+            $("#traffic_info tr:contains(CDNNOW) td:last").html('$' + result);
         },
 		
 		MtProCDN: function () {
