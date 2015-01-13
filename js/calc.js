@@ -44,7 +44,7 @@ function plan_calc(trange, cdn_name) {
 
 function calculate_total() {
 	var total = 0;
-	var continents = [ {name:'US'},{name:'SA'},{name:'EU'},{name:'AU'},{name:'AS'},{name:'AF'}];
+	var continents = [ {name:'US'},{name:'SA'},{name:'EU'},{name:'AU'},{name:'AS'},{name:'AF'},{name:'RU'}];
 			$.each(continents, function () {
 				$('#traff'+this.name).val($('#traff'+this.name).val().replace(/\D+/g,''));
 				if ($('#traff'+this.name).val() == '') $('#traff'+this.name).val(0);
@@ -409,10 +409,97 @@ var
  	  		    break; 
   	 		  }
 			$("#traffic_info tr:contains(JoDiHost) td:last").html('$' + result);
-		}
+		},
 
-		
-		
+		SkyparkCDN: function () {
+			var currency_usd = 66;
+			var traf = $("#traffic_volume").val();
+			var note = '', total = 0;
+			total = calculate_total();
+			continents_codes = {
+				'RU': 'Russia',
+				'US': 'USA',
+				'SA': 'South America',
+				'EU': 'Europe',
+				'AU': 'Australia',
+				'AS': 'Asia',
+				'AF': 'Africa'
+			};
+			var price1 = {continents: ['EU', 'US', 'SA'], price: 5};
+			var price2 = {continents: ['AU', 'AS', 'AF'], price: 8};
+			var matrix = [
+				{traffic: 1, prices: [price1, price2, {continents: ['RU'], price: 45}]},
+				{traffic: 5, prices: [price1, price2, {continents: ['RU'], price: 15}]},
+				{traffic: 50, prices: [price1, price2, {continents: ['RU'], price: 5}]},
+				{traffic: 100, prices: [price1, price2, {continents: ['RU'], price: 2.5}]},
+				{traffic: 500, prices: [price1, price2, {continents: ['RU'], price: 2}]},
+				{traffic: 3000, prices: [price1, price2, {continents: ['RU'], price: 1.7}]},
+				{traffic: 7000, prices: [price1, price2, {continents: ['RU'], price: 1.5}]},
+				{traffic: 15000, prices: [price1, price2, {continents: ['RU'], price: 1.2}]},
+				{traffic: 30000, prices: [price1, price2, {continents: ['RU'], price: 1}]}
+			];
+
+			var m2 = matrix,
+				t2 = traf,
+				s = 0,
+				result = 0,
+				group = {};
+			$.each(matrix, function (index) {
+
+				var nextEl = null;
+				if (index < matrix.length - 1) {
+					nextEl = matrix[index + 1];
+				} else {
+					nextEl = matrix[index];
+				}
+
+				var traffic = 0;
+				if (t2 >= this.traffic && t2 <= nextEl.traffic) {
+					var t3 = t2;
+					if (s > 0) {
+						t3 = t3 - this.traffic;
+					}
+					traffic = t3;
+				} else {
+					traffic = nextEl.traffic;
+				}
+
+				if (t2 >= this.traffic) {
+
+					$.each(this.prices, function () {
+						var cprice = this.price;
+						var group_money = 0;
+						var group_note = '';
+						var this_continents = this.continents;
+						$.each(this_continents, function (ci) {
+							result += traffic * ($('#traff' + this).val()) * cprice / total;
+							group_money += traffic * ($('#traff' + this).val()) * cprice / total;
+							group_note += continents_codes[this] + ((ci < this_continents.length - 1) ? ', ' : '');
+						});
+						if( typeof group[group_note] == "undefined" )
+							group[group_note] = group_money;
+						else
+							group[group_note] += group_money;
+					});
+
+				}
+				s += traffic;
+			});
+
+			note = '';
+			$.each(group, function (i, v) {
+				if (v > 0) {
+					var p = v / currency_usd;
+					p = p < 1 ? 1 : p.toFixed(0);
+					note += i + ' - $' + p + '<br>';
+				}
+			});
+
+			show_cdn_plan_notes("SkyparkCDN", note);
+			result = result / currency_usd;
+			result = result < 1 ? 1 : result.toFixed(0);
+			$("#traffic_info tr:contains(SkyparkCDN) td:last").html('$' + result);
+		}
 	};
 if (!Array.min) { Array.min = function( array ){return Math.min.apply( Math, array )} };	
 function highlight_cheapest() {
