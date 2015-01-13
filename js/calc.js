@@ -95,29 +95,29 @@ var
             switch( true )
             {
                 case traf < 10240:
-                    eu = Math.ceil(traf * 0.033);
-                    us = Math.ceil(traf * 0.04);
+                    eu = Math.ceil(traf * 0.089);
+                    us = Math.ceil(traf * 0.105);
                     note = 'Europe, Asia - ' + eu + '$' + '<br>' +
                         'USA, South America - ' + us + '$';
                     break;
 
                 case traf >= 10240 && traf < 51200:
-                    eu = Math.ceil(traf * 0.026);
-                    us = Math.ceil(traf * 0.033);
+                    eu = Math.ceil(traf * 0.072);
+                    us = Math.ceil(traf * 0.089);
                     note = 'Europe, Asia - ' + eu + '$' + '<br>' +
                         'USA, South America - ' + us + '$';
                     break;
 
                 case traf >= 51200 && traf < 102400:
-                    eu = Math.ceil(traf * 0.026);
-                    us = Math.ceil(traf * 0.03);
+                    eu = Math.ceil(traf * 0.064);
+                    us = Math.ceil(traf * 0.080);
                     note = 'Europe, Asia - ' + eu + '$' + '<br>' +
                         'USA, South America - ' + us + '$';
                     break;
 
                 case traf >= 102400:
-                    eu = Math.ceil(traf * 0.023);
-                    us = Math.ceil(traf * 0.026);
+                    eu = Math.ceil(traf * 0.056);
+                    us = Math.ceil(traf * 0.072);
                     note = 'Europe, Asia - ' + eu + '$' + '<br>' +
                         'USA, South America - ' + us + '$';
                     break;
