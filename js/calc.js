@@ -151,10 +151,39 @@ var
 		
 		KeyCDN: function () {
 			var traf = $("#traffic_volume").val();
-			var result = Math.ceil(traf * 0.04);
-			$("#traffic_info tr:contains(KeyCDN) td:last").html('$' + result);
+			var result = 0; 
+			var total = 0;
+			total = calculate_total();
+			var matrix = [
+                {traffic: 0, volume: 10000, prices:[{continents:['US','EU'],price: 0.04},{continents:['AU','AS'],price: 0.04}]},
+                {traffic: 10000, volume: 40000, prices:[{continents:['US','EU'],price: 0.036},{continents:['AU','AS'],price: 0.04}]},
+                {traffic: 50000, volume: 100000, prices:[{continents:['US','EU'],price: 0.032},{continents:['AU','AS'],price: 0.04}]},
+                {traffic: 150000, volume: 350000, prices:[{continents:['US','EU'],price: 0.028},{continents:['AU','AS'],price: 0.04}]},
+                {traffic: 500000, volume: 350000, prices:[{continents:['US','EU'],price: 0.02},{continents:['AU','AS'],price: 0.04}]},
+                {traffic: 1000000, volume: 20000000, prices:[{continents:['US','EU'],price: 0.01},{continents:['AU','AS'],price: 0.04}]},
+			];
+			
+			$.each(matrix, function (index) {
+                var vtraffic = 0;
+				if (traf > this.traffic) {
+                    if (traf <= (this.traffic+this.volume)) {
+                        vtraffic = traf-this.traffic;
+                    } else {
+                        vtraffic = this.volume;
+                    }
+					$.each(this.prices, function (){
+						var vprice = this.price;
+						$.each(this.continents, function (){
+							result += vtraffic * ($('#traff'+this ).val()) * vprice / total ;
+						});
+					});
+				}
+			});
 			show_cdn_plan_notes("KeyCDN","Default Plan");
+			result = Math.ceil(result);
+			$("#traffic_info tr:contains(KeyCDN) td:last").html('$' + result);
 		},
+        
 		CDNify: function () {
 			var trange = [ 
 				{name:'Micro', price:10, included:   150, excessPrice: 0.07 },
