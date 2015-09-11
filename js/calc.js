@@ -75,7 +75,13 @@ var
 				{name:'Platinum', price: 409, included: 2048, excessPrice: 0.20 } ];
 			plan_calc(trange, "CacheFly");
 		},
-		
+		BandwidthHog: function (){
+			var trange = [ 
+				{name:'100TB',   price:  989, included:  100000, excessPrice: 0.01 },
+				{name:'1PB',  price: 7999, included: 1000000, excessPrice: 0.007 }, 
+				{name:'5PB', price: 24980, included: 5000000, excessPrice: 0.005 } ];
+			plan_calc(trange, "BandwidthHog");
+		},
 		MaxCDN: function () {
 			var trange = [ 
 				{name:'100GB', price:9, included:   100, excessPrice: 0.08 },
@@ -370,19 +376,6 @@ var
 			$("#traffic_info tr:contains(Fastly) td:last").html('$' + result);
 		},
 		
-		OneHundredTBCDN: function () {
-			var traf = $("#traffic_volume").val();
-			var result = 0;
-			var note = '';
-			var rest100 = traf % 100000;
-			result += Math.floor( traf / 100000 ) * 2500;
-			var rest10 = rest100 % 10000;
-			result += Math.floor( rest100 / 10000 ) * 500;
-			result += Math.ceil( rest10 / 1000 ) * 75;
-			result = Math.ceil(result);
-			$("#traffic_info tr:contains(100TB) td:last").html('$' + result);
-			show_cdn_plan_notes("100TB","Default Plan");
-		},
 		JoDiHost: function () {
 			var traf = $("#traffic_volume").val();
 			switch( true )
