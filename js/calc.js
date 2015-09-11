@@ -77,6 +77,7 @@ var
 		},
 		BandwidthHog: function (){
 			var trange = [ 
+				{name:'PAYG',   price:  0, included:  0, excessPrice: 0.01 },
 				{name:'100TB',   price:  989, included:  100000, excessPrice: 0.01 },
 				{name:'1PB',  price: 7999, included: 1000000, excessPrice: 0.007 }, 
 				{name:'5PB', price: 24980, included: 5000000, excessPrice: 0.005 } ];
@@ -458,7 +459,12 @@ var
 				{traffic: 3000, prices: [price1, price2, {continents: ['RU'], price: 1.7}]},
 				{traffic: 7000, prices: [price1, price2, {continents: ['RU'], price: 1.5}]},
 				{traffic: 15000, prices: [price1, price2, {continents: ['RU'], price: 1.2}]},
-				{traffic: 30000, prices: [price1, price2, {continents: ['RU'], price: 1}]}
+				{traffic: 30000, prices: [price1, price2, {continents: ['RU'], price: 1}]},
+				{traffic: 100000, prices: [price1, price2, {continents: ['RU'], price: 1}]},
+				{traffic: 400000, prices: [price1, price2, {continents: ['RU'], price: 1}]},
+				{traffic: 700000, prices: [price1, price2, {continents: ['RU'], price: 1}]},
+				{traffic: 1000000, prices: [price1, price2, {continents: ['RU'], price: 1}]},
+				{traffic: 10000000, prices: [price1, price2, {continents: ['RU'], price: 1}]}
 			];
 
 			var m2 = matrix,
