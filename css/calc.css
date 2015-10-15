@@ -1,62 +1,174 @@
 /* Space out content a bit */
-      body {
-        padding-top: 20px;
-        padding-bottom: 20px;
-      }
-			#accordion	{margin-bottom: 4px;}
-.table {
-				position: relative;
-			}
-			
-      /* Make the masthead heading the same height as the navigation */
-      .header h3 {
-        margin-top: 0;
-        margin-bottom: 0;
-        line-height: 40px;
-        padding-bottom: 19px;
-      }
-      /* Custom page footer */
-      .footer {
-        padding-top: 19px;
-        color: #777;
-        border-top: 1px solid #e5e5e5;
-      }
-
-      .container-narrow > hr {
-        margin: 30px 0;
-      }
-      /* Main marketing message and sign up button */
-      .jumbotron {
-        text-align: center;
-        border-bottom: 1px solid #e5e5e5;
-      }
-      .jumbotron .btn {
-        font-size: 21px;
-        padding: 14px 24px;
-      }
-      /* Supporting marketing content */
-      .marketing {
-        margin: 40px 0;
-      }
-      .marketing p + h4 {
-        margin-top: 28px;
-      }
-
-			
-	  .centered {
-			float: none;
-			margin: 0 auto;
-		}
-		#traffic_info tr.success a {color: white}
-		#traffic_info tr.warning a {color: white}
-		#traffic_info td:last-child  {font-weight: bold;text-align: right;font-size: 20px;}
-		#traffic_info #recommended  {display: inline-block;background-color: rgba(0,0,0,0.3);padding: 0px 3px;border-radius: 3px;}
-		#traffic_info #coupon  {font-weight: bold;background-color: rgba(255,20,0,0.9);padding: 0px 3px;border-radius: 3px;}
-.calc-head h2{float: left;}
-#traffic_volume{font-size: 28px; font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;font-weight: 500;line-height: 1.1; height:46px;}
-.panel{border-top:0px none !important; border-bottom:0px none !important;}
-#max{background-color: #fff;padding: 4px;border-radius: 3px;}
-#recommended{font-size: 24px;float: right;font-weight: bold;}
-#logo{font-weight:bold; font-size:30px; font-family:arial;
+body {
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
-#logo a:hover{text-decoration:none;}
+#accordion {
+	margin-bottom: 4px;
+}
+.table {
+	position: relative;
+}
+
+* {
+	transition: all ease-in-out 200ms 0s;
+}
+a:hover, a:focus {
+	color: #0D957A;
+	text-decoration: none;
+	outline: none !important;
+}
+
+li.active a { cursor: default;}
+.accordion-toggle span {
+	margin-right: 5px;
+	vertical-align: -1px;
+}
+
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+	margin-top: 0;
+	margin-bottom: 0;
+	line-height: 40px;
+	padding-bottom: 19px;
+}
+/* Custom page footer */
+.footer {
+	padding-top: 19px;
+	color: #777;
+	border-top: 1px solid #e5e5e5;
+}
+
+.container-narrow > hr {
+	margin: 30px 0;
+}
+/* Main marketing message and sign up button */
+.jumbotron {
+	text-align: center;
+	border-bottom: 1px solid #e5e5e5;
+}
+.jumbotron .btn {
+	font-size: 21px;
+	padding: 14px 24px;
+}
+/* Supporting marketing content */
+.marketing {
+	margin: 40px 0;
+}
+.marketing p + h4 {
+	margin-top: 28px;
+}
+
+
+.centered {
+	float: none;
+	margin: 0 auto;
+}
+#traffic_info tr.success a {
+	color: white
+}
+#traffic_info tr.warning a {
+	color: white
+}
+#traffic_info td:last-child  {
+	font-weight: bold;
+	text-align: right;
+	font-size: 20px;
+}
+#traffic_info #recommended  {
+	display: inline-block;
+	background-color: rgba(0,0,0,0.3);
+	padding: 0px 3px;
+	border-radius: 3px;
+}
+#traffic_info #coupon  {
+	font-weight: bold;
+	background-color: rgba(255,20,0,0.9);
+	padding: 0px 3px;
+	border-radius: 3px;
+}
+.calc-head h2 {
+	vertical-align: top;
+	display: inline-block;
+}
+.calc-head__input_container {
+	width: 25%;
+	display: inline-block;
+	margin: 17px 10px;
+}
+#traffic_volume {
+	font-size: 28px; 
+	font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-weight: 500;
+	line-height: 1.1; 
+	height:46px;
+}
+.panel {
+	border-top:0px none !important; 
+	border-bottom:0px none !important;
+}
+#max {
+	background-color: #fff;
+	padding: 4px;
+	border-radius: 3px;
+}
+#recommended {
+	font-size: 24px;
+	float: right;
+	font-weight: bold;
+}
+#logo {
+	font-weight:bold; 
+	font-size:30px; 
+	font-family:arial;
+	display: inline-block;
+}
+#logo a:hover{
+	text-decoration:none;
+}
+.row {
+	margin: 0 !important;
+}
+.options {
+	float:right;
+	z-index:9999;
+}
+#contacts > .row > .col-sm-12 {
+	padding-right: 0;
+	padding-left: 0;
+}
+@media (max-width: 768px) {
+	.options {
+		float: none;
+		clear: both;
+		margin-bottom: 25px;
+	}
+}
+@media (max-width: 688px) {
+	.calc-head {
+		text-align: center;
+	}
+	.calc-head__input_container {
+		width: 100%;
+		margin: 0;
+	}
+	#traffic_volume {
+		text-align: center;
+		padding-top: 8px;
+	}
+}
+
+@media (max-width: 500px){
+	.header .nav-pills {
+		float: none !important;
+		width: 100%;
+	}
+	.header .nav-pills li {
+		width: 32%;
+		text-align: center;
+	}
+	#logo {
+		display: block;
+		text-align: center;
+	}
+}
