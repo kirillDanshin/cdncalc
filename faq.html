@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CDN Calculator - Compare and find the best and cheapest CDN out there</title>
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootswatch/3.0.0/flatly/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.0.0/flatly/bootstrap.min.css">
     <link rel="stylesheet" href="css/calc.css">
   </head>
   <body>
@@ -64,16 +64,17 @@
       </div>
       <!-- Snippet Code end -->
       <div class="footer">
-        <p>&copy; CDNCalc 2013 - Find the cheapest CDN - <a href="http://www.twitter.com/jimaek">@jimaek</a> - <a href="http://github.com/jimaek/cdncalc">Github</a> </p>
+        <p>&copy; CDNCalc 2015 - Find the cheapest CDN - <a href="https://github.com/CDN-Calc/cdncalc">Github</a> </p>
       </div>
     </div>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js" type="text/javascript"></script> 
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="http://cdn.jsdelivr.net/jquery.bootstrapvalidation/1.3.6/jqBootstrapValidation.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>    
+    <script type="text/javascript" src="js/jquery.tableSort.js"  charset="utf-8"></script>
+    <script type="text/javascript" src="js/calc.js"  charset="utf-8"></script>
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
       
       ga('create', 'UA-44777319-1', 'cdncalc.com');
@@ -81,18 +82,23 @@
       
     </script>
     <script type="text/javascript">
-      /* <![CDATA[ */
-      var google_conversion_id = 1008865052;
-      var google_conversion_label = "_7LdCLaKulcQnJ6I4QM";
-      var google_custom_params = window.google_tag_params;
-      var google_remarketing_only = true;
-      /* ]]> */
+      adroll_adv_id = "YG2XODOP7JF4XFKIJHODC5";
+      adroll_pix_id = "7HQEKVS2VFEENJXY4G2AOB";
+      (function () {
+        var _onload = function(){
+          if (document.readyState && !/loaded|complete/.test(document.readyState)){setTimeout(_onload, 10);return}
+          if (!window.__adroll_loaded){__adroll_loaded=true;setTimeout(_onload, 50);return}
+          var scr = document.createElement("script");
+          var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
+          scr.setAttribute('async', 'true');
+          scr.type = "text/javascript";
+          scr.src = host + "/j/roundtrip.js";
+          ((document.getElementsByTagName('head') || [null])[0] ||
+            document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
+        };
+        if (window.addEventListener) {window.addEventListener('load', _onload, false);}
+        else {window.attachEvent('onload', _onload)}
+      }());
     </script>
-    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js"></script>
-    <noscript>
-      <div style="display:inline;">
-        <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1008865052/?value=1.00&amp;currency_code=EUR&amp;label=_7LdCLaKulcQnJ6I4QM&amp;guid=ON&amp;script=0"/>
-      </div>
-    </noscript>
   </body>
 </html>
